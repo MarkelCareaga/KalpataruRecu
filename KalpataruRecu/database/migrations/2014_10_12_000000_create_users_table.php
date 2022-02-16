@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('CodCurso');
             $table->string('dni');
             $table->boolean('validado');
-            $table->string('idClase');
-            $table->string('idClase')->references('id')->on('clases');
+            $table->unsignedbigInteger('idClase');
+            $table->foreign('idClase')->references('id')->on('clases');
             $table->rememberToken();
             $table->timestamps();
         });

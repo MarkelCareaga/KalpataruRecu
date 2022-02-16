@@ -14,16 +14,16 @@ class CreateMensajesTable extends Migration
     public function up()
     {
         Schema::create('mensajes', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('creador')->nullable();
             $table->string('titulo');
             $table->string('contenido');
-            $table->bigInteger('idUsuario');
-            $table->bigInteger('idClase');
-            $table->bigInteger('idEstado');
-            $table->bigInteger('idUsuario')->references('id')->on('users');
-            $table->bigInteger('idClase')->references('id')->on('clases');
-            $table->bigInteger('idEstado')->references('id')->on('mensaje_estados');            
+            $table->unsignedbigInteger('idUsuario');
+            $table->unsignedbigInteger('idClase');
+            $table->unsignedbigInteger('idEstado');
+            $table->foreign('idUsuario')->references('id')->on('users');
+            $table->foreign('idClase')->references('id')->on('clases');
+            $table->foreign('idEstado')->references('id')->on('mensaje_estado');            
             $table->date('fecha');
             $table->bigInteger('likes');
             $table->timestamps();
